@@ -79,10 +79,10 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/PDF/Writer.pm
-/usr/lib/perl5/vendor_perl/5.26.1/PDF/Writer/mock.pm
-/usr/lib/perl5/vendor_perl/5.26.1/PDF/Writer/pdfapi2.pm
-/usr/lib/perl5/vendor_perl/5.26.1/PDF/Writer/pdflib.pm
+/usr/lib/perl5/vendor_perl/5.28.0/PDF/Writer.pm
+/usr/lib/perl5/vendor_perl/5.28.0/PDF/Writer/mock.pm
+/usr/lib/perl5/vendor_perl/5.28.0/PDF/Writer/pdfapi2.pm
+/usr/lib/perl5/vendor_perl/5.28.0/PDF/Writer/pdflib.pm
 
 %files dev
 %defattr(-,root,root,-)
