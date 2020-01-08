@@ -4,7 +4,7 @@
 #
 Name     : perl-PDF-Writer
 Version  : 0.06
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpdf-writer-perl/libpdf-writer-perl_0.06-1.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : PDF writer abstraction layer
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-PDF-Writer-license = %{version}-%{release}
+Requires: perl-PDF-Writer-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -23,6 +24,7 @@ See the individual module documentation for more information
 Summary: dev components for the perl-PDF-Writer package.
 Group: Development
 Provides: perl-PDF-Writer-devel = %{version}-%{release}
+Requires: perl-PDF-Writer = %{version}-%{release}
 
 %description dev
 dev components for the perl-PDF-Writer package.
@@ -36,18 +38,28 @@ Group: Default
 license components for the perl-PDF-Writer package.
 
 
+%package perl
+Summary: perl components for the perl-PDF-Writer package.
+Group: Default
+Requires: perl-PDF-Writer = %{version}-%{release}
+
+%description perl
+perl components for the perl-PDF-Writer package.
+
+
 %prep
 %setup -q -n PDF-Writer-0.06
-cd ..
-%setup -q -T -D -n PDF-Writer-0.06 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libpdf-writer-perl_0.06-1.debian.tar.xz
+cd %{_builddir}/PDF-Writer-0.06
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/PDF-Writer-0.06/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/PDF-Writer-0.06/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -57,7 +69,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -66,7 +78,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-PDF-Writer
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-PDF-Writer/deblicense_copyright
+cp %{_builddir}/PDF-Writer-0.06/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-PDF-Writer/536ebc89587aa040e55f78494e91737ad4f5a68b
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -79,10 +91,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/PDF/Writer.pm
-/usr/lib/perl5/vendor_perl/5.28.2/PDF/Writer/mock.pm
-/usr/lib/perl5/vendor_perl/5.28.2/PDF/Writer/pdfapi2.pm
-/usr/lib/perl5/vendor_perl/5.28.2/PDF/Writer/pdflib.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -92,4 +100,11 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-PDF-Writer/deblicense_copyright
+/usr/share/package-licenses/perl-PDF-Writer/536ebc89587aa040e55f78494e91737ad4f5a68b
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer.pm
+/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer/mock.pm
+/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer/pdfapi2.pm
+/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer/pdflib.pm
