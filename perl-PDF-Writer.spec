@@ -4,7 +4,7 @@
 #
 Name     : perl-PDF-Writer
 Version  : 0.06
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpdf-writer-perl/libpdf-writer-perl_0.06-1.debian.tar.xz
@@ -78,7 +78,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-PDF-Writer
-cp %{_builddir}/PDF-Writer-0.06/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-PDF-Writer/536ebc89587aa040e55f78494e91737ad4f5a68b
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-PDF-Writer/536ebc89587aa040e55f78494e91737ad4f5a68b
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -104,7 +104,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer.pm
-/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer/mock.pm
-/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer/pdfapi2.pm
-/usr/lib/perl5/vendor_perl/5.30.1/PDF/Writer/pdflib.pm
+/usr/lib/perl5/vendor_perl/5.30.2/PDF/Writer.pm
+/usr/lib/perl5/vendor_perl/5.30.2/PDF/Writer/mock.pm
+/usr/lib/perl5/vendor_perl/5.30.2/PDF/Writer/pdfapi2.pm
+/usr/lib/perl5/vendor_perl/5.30.2/PDF/Writer/pdflib.pm
