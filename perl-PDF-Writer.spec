@@ -4,7 +4,7 @@
 #
 Name     : perl-PDF-Writer
 Version  : 0.06
-Release  : 20
+Release  : 21
 URL      : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpdf-writer-perl/libpdf-writer-perl_0.06-1.debian.tar.xz
@@ -104,7 +104,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/PDF/Writer.pm
-/usr/lib/perl5/vendor_perl/5.34.0/PDF/Writer/mock.pm
-/usr/lib/perl5/vendor_perl/5.34.0/PDF/Writer/pdfapi2.pm
-/usr/lib/perl5/vendor_perl/5.34.0/PDF/Writer/pdflib.pm
+/usr/lib/perl5/*
