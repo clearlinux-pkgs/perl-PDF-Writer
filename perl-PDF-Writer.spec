@@ -4,7 +4,7 @@
 #
 Name     : perl-PDF-Writer
 Version  : 0.06
-Release  : 25
+Release  : 26
 URL      : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/R/RK/RKINYON/PDF-Writer-0.06.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libp/libpdf-writer-perl/libpdf-writer-perl_0.06-1.debian.tar.xz
